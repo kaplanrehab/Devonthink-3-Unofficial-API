@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+BASEDIR=${0:a:h}
+openssl=$(which openssl)
+
+$openssl req -x509 -newkey rsa:4096 -nodes -out "$BASEDIR/certificates/cert.pem" -keyout "$BASEDIR/certificates/key.pem" -days 358000

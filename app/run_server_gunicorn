@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+## Vars
+BASEDIR=${0:a:h}
+pipenv=$(which pipenv)
+lsof=$(which lsof)
+
+## Kill anything running on this port server
+$lsof -ti tcp:8000 | xargs kill
+
+## Start server
+cd $BASEDIR
+cd ..
+
+#$pipenv run gunicorn -w4 --certfile="$BASEDIR/certificates/cert.pem" --keyfile="$BASEDIR/certificates/key.pem" "app.server:create_app()"
+$pipenv run gunicorn -w4 -k uvicorn.workers.UvicornWorker --certfile="$BASEDIR/certificates/cert.pem" --keyfile="$BASEDIR/certificates/key.pem" --timeout=864000 --reload  "app.main:app"

@@ -1,0 +1,4 @@
+{
+    "cluster":"mongodb+srv://admin:pass@cluster0.aaaaa.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "database":"test"
+}

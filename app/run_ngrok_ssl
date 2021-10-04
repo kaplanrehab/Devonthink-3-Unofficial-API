@@ -1,0 +1,2 @@
+ngrok=$(which ngrok)
+$ngrok http -bind-tls=true https://0.0.0.0:8000/

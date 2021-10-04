@@ -1,0 +1,22 @@
+.DS_Store
+.venv
+app/.DS_Store
+app/asinterface/.DS_Store
+app/static/.DS_Store
+app/__pycache__
+app/tmp/*
+app/uploads/*
+app/zip/*
+app/Editadas - cópia.zip
+app/Editadas.zip
+app/static/tmp/*
+app/static/uploads/*
+app/static/zip/*
+app/config/registered_dbs.json
+app/config/scheduler_config.json
+app/config/subscription_list.json
+app/certificates/cert.pem
+app/certificates/key.pem
+APAGAR
+.DS_Store
+**/.DS_Store

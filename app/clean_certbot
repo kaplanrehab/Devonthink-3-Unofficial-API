@@ -1,0 +1,22 @@
+#!/bin/zsh
+rm=$(which rm)
+
+
+echo
+echo
+echo
+echo
+echo "This program will delete the folder ~/.certbot. The app itself won't be uninstalled. To do so, type 'brew uninstall certbot'."
+echo
+echo "To delete the crontab added to make the auto-renew possible, type 'crontab -r'. Be aware that it will delete all of the user's cronjobs. To check the active cronjobs, type 'crontab -l'. \
+To edit them manually, type 'crontab -e'."
+echo
+read "ANSWER?You are about to delete all certbot files, including logs, accounts, certificates and registered domains. Are you sure?   "
+case "$ANSWER" in 
+    [nN][oO]|[nN])
+    exit
+esac
+echo
+$rm -rf ~/.certbot
+
+

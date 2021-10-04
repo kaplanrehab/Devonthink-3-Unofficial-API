@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+## Vars
+BASEDIR=${0:a:h}
+pipenv=$(which pipenv)
+lsof=$(which lsof)
+
+## Kill anything running on this port server
+$lsof -ti tcp:8000 | xargs kill
+
+## Start server
+cd $BASEDIR
+#cd ..
+
+
+#$pipenv run uvicorn "main:app" --host 0.0.0.0 --port 8000 --ssl-certfile="$BASEDIR/certificates/cert.pem" --ssl-keyfile="$BASEDIR/certificates/key.pem" --workers 10  
+$pipenv run uvicorn "main:app" --host 0.0.0.0 --port 8000 --ssl-certfile="$BASEDIR/certificates/cert.pem" --ssl-keyfile="$BASEDIR/certificates/key.pem" --reload
+

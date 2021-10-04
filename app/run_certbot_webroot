@@ -1,0 +1,43 @@
+#!/bin/zsh
+
+## Vars
+BASEDIR=${0:a:h}
+certbot=$(which certbot)
+ln=$(which ln)
+
+cd /
+CURRENT_DIR=$(pwd) 
+echo
+echo
+echo
+echo
+echo
+read "DOMAIN_NAME?Insert domain name (without https://):  "
+read "DOMAIN_CONFIRM?You inserted '$DOMAIN_NAME'. Confirm? [y/N]  "
+case "$DOMAIN_CONFIRM" in 
+    [nN][oO]|[nN])
+    exit
+esac
+echo
+echo
+echo "You are in $CURRENT_DIR"
+read "SERVER_ROOT_PATH?Insert server's root path:  "
+read "ROOT_CONFIRM?You inserted '$SERVER_ROOT_PATH'. Confirm? [y/N]  "
+case "$ROOT_CONFIRM" in 
+    [nN][oO]|[nN])
+    exit
+esac
+sudo $certbot certonly --webroot -w $SERVER_ROOT_PATH --config-dir ~/.certbot/config --logs-dir ~/.certbot/logs --work-dir ~/.certbot/work -d $DOMAIN_NAME
+sudo chown -R $USER ~/.certbot
+
+echo
+echo
+echo "CREATING CERTS SYMLINKS"
+$ln -sf ~/.certbot/config/live/$DOMAIN_NAME/cert.pem $BASEDIR/certificates/cert.pem
+$ln -sf ~/.certbot/config/live/$DOMAIN_NAME/privkey.pem $BASEDIR/certificates/key.pem
+
+echo
+echo
+echo "CREATING CRON AUTO-RENEW"
+echo "0 0,12 * * * root python -c 'import random; import time; time.sleep(random.random() * 3600)' && certbot renew -q --config-dir ~/.certbot/config --logs-dir ~/.certbot/logs --work-dir ~/.certbot/work" | crontab -
+#echo "0 0,12 * * * root python -c 'import random; import time; time.sleep(random.random() * 3600)' && certbot renew -q --config-dir ~/.certbot/config --logs-dir ~/.certbot/logs --work-dir ~/.certbot/work" | sudo tee -a /etc/crontab
