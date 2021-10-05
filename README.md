@@ -1,5 +1,5 @@
 # NOTE
-This software is a work for hire coded by 8isnothing for Richard Kaplan and Kaplan Life Care Planning.  Permission is given for use by others for non-commercial purposes provided you share with the public any edits or derivative works you create.  Please contact Richard Kaplan rkaplan@kaplanlifecareplan.com regarding any inquiry about commercial use of this code.
+This software is a work for hire coded by [8isnothing](https://github.com/8isnothing) (8isnothing@protonmail.com) for Richard Kaplan and Kaplan Life Care Planning.  Permission is given for use by others for non-commercial purposes provided you share with the public any edits or derivative works you create.  Please contact Richard Kaplan rkaplan@kaplanlifecareplan.com regarding any inquiry about commercial use of this code.
 
 # INSTRUCTIONS
 
@@ -68,6 +68,11 @@ In "app", run "run_server_uvicorn"
 Go to the url https://0.0.0.0:8000/docs to see how to use the APIs. Alternatively, check https://0.0.0.0:8000/redoc.
 
 # Extra
+
+## iOS Shortcut
+Use this very simple shortcut shortcut to call your API or inspire yourself to create more complex workflows. You'll have to customize it a bit, inserting your own username and password (this info is never shared with anyone). It's a 6-step shortcut, so it should be self-explanatory.
+
+link: https://www.icloud.com/shortcuts/4f400f42279840bd890146b5f06dc8bb
 
 ## Zapier Webhook
 In the project main folder, open the "call_webhook.scpt" file. Then, change the first three vars: baseURL, user and pass to the info pertinent to your use. User and Pass should match what you use to login in the API.
