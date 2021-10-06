@@ -31,7 +31,7 @@ class DTRecord(BaseModel):
     dt_meta: Optional[dict]
     dt_custom_meta: Optional[dict]
     dt_url: Optional[str]
-    dt_uuid_link: Optional[AnyUrl]
+    dt_uuid_link: Optional[str]
     dt_database_name: str
     dt_database_uuid: str
     dt_addition_date: datetime
